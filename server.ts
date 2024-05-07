@@ -1,16 +1,19 @@
-const express = require('express');
-const app = express();
-const db = require('./config/db');
-const User = require('./models/User');
-const PORT = process.env.PORT;
+import express from 'express';
+import {connectToDatabase} from './config/db';
+import User from './models/User';
 
-app.get('/test', async (req, res) => {
+const app = express();
+const PORT = process.env.PORT;
+import {Request, Response} from "express";
+
+
+app.get('/test', async (res: Response, req: Request) => {
     const user = new User({
         username: 'ady',
         email: 'ady24@gmail.com',
         password: '123',
         role: 'user',
-    })
+    });
 
     const data = await user.save();
     res.status(200).json({
