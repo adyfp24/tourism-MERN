@@ -2,19 +2,15 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const connectToDatabase = async () => {
+const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URI || '');
+        const connection = await mongoose.connect(process.env.MONGO_URI || '');
         console.log('koneksi mongoDB berhasil');
-    } catch (error: unknown) {
-        console.log('koneksi mongoDB gagal: ', (error as Error).message);
-        process.exit(1); 
+        return connection; 
+    } catch (error) {
+        console.log('koneksi mongoDB gagal: ' + error);
+        process.exit(1);
     }
 };
 
-connectToDatabase();
-
-export default mongoose.connection;
-
-
-
+export default connectDB;
