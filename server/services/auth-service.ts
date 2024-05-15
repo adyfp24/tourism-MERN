@@ -1,54 +1,56 @@
 import User from "../models/User";
 import bcrypt from 'bcrypt';
-import {generateJWT} from "../utils/sign-token";
+import { generateJWT } from "../utils/sign-token";
+
+interface UserData {
+    username: string;
+    email?: string;
+    password: string;
+    role?: string;
+}
 
 export class AuthService {
-    static async register(userData: any) {
+    static async register(userData: UserData) {
         try {
             const isUsernameExist = await User.findOne({ username: userData.username });
             if (isUsernameExist) {
-                return { success: false, message: 'username sudah digunakan' };
+                return false;
             }
 
             const hashedPassword = await bcrypt.hash(userData.password, 10);
             const newUser = new User({
                 ...userData,
-                password: hashedPassword
+                password: hashedPassword,
             });
-            const data = newUser.save();
+            const data = await newUser.save();
             return data;
         } catch (error) {
             console.error(error);
-            return { success: false, message: 'Internal server error: ' + error };
+            throw new Error('Terjadi kesalahan saat registrasi');
         }
     }
 
-    static async login(userData: any) {
+    static async login(userData: UserData) {
         try {
-            const user = await User.findOne({
-                username: userData.username,
-            });
+            const user = await User.findOne({ username: userData.username });
 
             if (!user) {
-                return { succes: false, message: "username tidak terdaftar" }
+                return false
             }
 
             const passwordValid = await bcrypt.compare(userData.password, user.password);
             if (!passwordValid) {
-                return { succes: false, message: "password salah" }
+                return false;
             }
 
             const apiToken = generateJWT(user.id_user);
             return {
-                success: true,
-                message: 'Login sukses',
-                data: user,
-                token: apiToken
+                user,
+                apiToken,
             };
         } catch (error) {
             console.error(error);
-            return { success: false, message: 'Internal server error: ' + error };
+            throw new Error('Failed to login user');
         }
     }
-};
-
+}

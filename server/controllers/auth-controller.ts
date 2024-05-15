@@ -4,69 +4,55 @@ import { AuthService } from "../services/auth-service";
 export class AuthController {
     static async register(req: Request, res: Response) {
         try {
-            const {
-                username,
-                email,
-                password,
-                role
-            } = req.body;
+            const { username, email, password, role } = req.body;
 
-            const data = {
-                username,
-                email,
-                password,
-                role
-            }
+            const data = { username, email, password, role };
 
             const newUser = await AuthService.register(data);
             if (newUser) {
                 res.status(200).json({
-                    message: 'user berhasil mendaftar',
-                    data: newUser
-                })
+                    success: true,
+                    message: 'User berhasil mendaftar',
+                    data: newUser,
+                });
             } else {
-                res.status(404).json({
-                    message: 'user gagal mendaftar',
-                })
+                res.status(400).json({
+                    success: false,
+                    message: 'User gagal mendaftar',
+                });
             }
         } catch (error) {
             res.status(500).json({
-                message: 'internal server error: ' + error,
-            })
+                success: false,
+                message: 'Internal server error ' + error,
+            });
         }
     }
 
     static async login(req: Request, res: Response) {
         try {
-            const {
-                username,
-                email,
-                password,
-                role
-            } = req.body;
+            const { username, password } = req.body;
 
-            const data = {
-                username,
-                email,
-                password,
-                role
-            }
+            const data = { username, password };
 
             const loginUser = await AuthService.login(data);
             if (loginUser) {
-                res.status(200).json(
-                    loginUser
-                )
+                res.status(200).json({
+                    success: true,
+                    message: 'User berhasil login',
+                    data: loginUser,
+                });
             } else {
-                res.status(404).json(
-                    loginUser
-                )
+                res.status(400).json({
+                    success: false,
+                    message: 'User gagal login',
+                });
             }
         } catch (error) {
             res.status(500).json({
-                message: 'internal server error: ' + error,
-            })
+                success: false,
+                message: 'Internal server error ' + error,
+            });
         }
     }
 }
-
