@@ -21,4 +21,17 @@ export class DestinationService {
             throw new Error('Failed to create destination');
         }
     }
+
+    static async getAll(){
+        try {
+            const allDestination = await Destination.find().populate('spots').populate('activities');
+            if(!allDestination){
+                return false
+            }
+            return allDestination 
+        } catch (error) {
+            console.error(error);
+            throw new Error('Failed to get all destination');
+        }
+    }
 }

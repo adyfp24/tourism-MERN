@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { DestinationService } from "../services/dest-services";
 
 export class DestinasiController {
-    static async createDestinasi(req: Request, res: Response) {
+    static async createDestination(req: Request, res: Response) {
         try {
             const {
                 title,
@@ -19,7 +19,6 @@ export class DestinasiController {
             const newDestination = await DestinationService.create(data);
 
             if (newDestination) {
-
                 res.status(200).json({
                     success: true,
                     message: 'User berhasil mendaftar',
@@ -36,8 +35,29 @@ export class DestinasiController {
                 succes: false,
                 message: "internal server eror :" + error
             });
+        }
+    }
 
-            console.log(error)
+    static async getAllDestination(req: Request, res: Response){
+        try {
+            const allDestination = await DestinationService.getAll();
+            if(allDestination){
+                res.status(200).json({
+                    success: true,
+                    message: 'Data destinasi tersedia',
+                    data: allDestination,
+                });
+            }else{
+                res.status(400).json({
+                    success: false,
+                    message: 'gagal mendapat data destinasi',
+                });
+            }
+        } catch (error) {
+            res.status(500).json({
+                succes: false,
+                message: "internal server eror :" + error
+            });
         }
     }
 }
