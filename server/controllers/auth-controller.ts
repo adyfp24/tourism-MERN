@@ -40,7 +40,8 @@ export class AuthController {
                 res.status(200).json({
                     success: true,
                     message: 'User berhasil login',
-                    data: loginUser,
+                    data: loginUser.user,
+                    access_token: loginUser.apiToken
                 });
             } else {
                 res.status(400).json({

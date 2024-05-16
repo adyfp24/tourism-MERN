@@ -1,4 +1,4 @@
-import User from "../models/User";
+import User, {IUser} from "../models/User";
 import bcrypt from 'bcrypt';
 import { generateJWT } from "../utils/sign-token";
 
@@ -43,7 +43,7 @@ export class AuthService {
                 return false;
             }
 
-            const apiToken = generateJWT(user.id_user);
+            const apiToken = generateJWT(user._id, user.username);
             return {
                 user,
                 apiToken,
