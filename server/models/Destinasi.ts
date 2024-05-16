@@ -1,13 +1,11 @@
 import mongoose, { Document, Schema } from 'mongoose';
-import { ISpot } from './Spot';
-import { IActivity } from './Activity';
 
 export interface IDestination extends Document {
   title: string;
   description: string;
   headerImg: string;
-  spots: ISpot[];
-  activities: IActivity[];
+  spots: mongoose.Schema.Types.ObjectId[];
+  activities: mongoose.Schema.Types.ObjectId[];
 }
 
 const destinationSchema: Schema = new Schema({
@@ -23,16 +21,16 @@ const destinationSchema: Schema = new Schema({
     type: String,
     required: true,
   },
-  spots: {
-    type: [mongoose.Schema.Types.ObjectId],
+  spots: [{
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Spot',
     required: true,
-  },
-  activities: {
-    type: [mongoose.Schema.Types.ObjectId],
+  }],
+  activities: [{
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Activity',
     required: true,
-  }
+  }]
 }, {
   timestamps: true
 });

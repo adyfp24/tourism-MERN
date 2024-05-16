@@ -2,17 +2,16 @@ import mongoose, {Schema, Document} from "mongoose";
 
 export interface ISpot extends Document{
     title: string,
-    deskripsi: string,
+    description: string,
     headerImg: string,
 }
-
 
 const spotSchema : Schema = new Schema({
     title: {
         type: String,
         required: true
     },
-    deskripsi: {
+    description: {
         type: String,
         required: true
     },
@@ -24,4 +23,5 @@ const spotSchema : Schema = new Schema({
     timestamps: true
 }); 
 
-export default spotSchema;
+const Spot = mongoose.model<ISpot>('Spot', spotSchema);
+export default Spot;

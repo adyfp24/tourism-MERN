@@ -2,7 +2,7 @@ import mongoose, {Schema, Document} from "mongoose";
 
 export interface IActivity extends Document {
     title: string,
-    deskripsi: string,
+    description: string,
     headerImg: string,
 }
 
@@ -11,7 +11,7 @@ const activitySchema : Schema = new Schema({
         type: String,
         required: true
     },
-    deskripsi: {
+    description: {
         type: String,
         required: true
     },
@@ -23,4 +23,5 @@ const activitySchema : Schema = new Schema({
     timestamps: true
 }); 
 
-export default activitySchema;
+const Activity = mongoose.model<IActivity>('Activity', activitySchema);
+export default Activity;
