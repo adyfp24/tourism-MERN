@@ -1,6 +1,18 @@
-const mongoose = require('mongoose');
+import mongoose, { Schema } from 'mongoose';
 
-const userSchema = new mongoose.Schema({
+enum userRole {
+    User = 'user',
+    Admin = 'admin'
+}
+
+interface IUser {
+    username: string,
+    email: string,
+    password: string,
+    role: string,
+}
+
+const userSchema: Schema = new Schema({
     username: {
         type: String,
         required: true,
@@ -15,17 +27,12 @@ const userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['user','admin'],
+        enum: Object.values(userRole),
         required: true
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now 
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now 
     }
-})
+}, {
+    timestamps: true
+});
 
-export default mongoose.model('User', userSchema);
+const User = mongoose.model<IUser>('User', userSchema);
+export default User;
