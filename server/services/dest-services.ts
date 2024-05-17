@@ -2,14 +2,14 @@ import { StringExpression } from "mongoose";
 import Destination from "../models/Destinasi";
 
 
-interface destinationData {
+interface IDestination {
     title: string,
     description: string,
     headerImg: string
 }
 
 export class DestinationService {
-    static async create(data: destinationData) {
+    static async create(data: IDestination) {
         try {
             const newDestination = await Destination.create(data)
             if (!newDestination) {
@@ -34,4 +34,5 @@ export class DestinationService {
             throw new Error('Failed to get all destination');
         }
     }
+
 }

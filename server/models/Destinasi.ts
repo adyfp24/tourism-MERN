@@ -37,3 +37,5 @@ const destinationSchema: Schema = new Schema({
 
 const Destination = mongoose.model<IDestination>('Destination', destinationSchema);
 export default Destination;
+
+
