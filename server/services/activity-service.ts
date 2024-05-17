@@ -1,29 +1,29 @@
+import Activity from "../models/Activity";
 import Destination from "../models/Destinasi";
-import Spot from "../models/Spot";
 
-interface ISpot {
+interface IActivity{
     title: string,
     description: string,
     headerImg: string
 }
 
-export class SpotService {
+export class ActivityService {
 
-    static async create (data : ISpot, destinationId: any){
+    static async create (data : IActivity, destinationId: any){
         try {
-            const newSpot = new Spot(data);
-            const savedSpot = await newSpot.save();
+            const newActivity = new Activity(data);
+            const savedActivity = await newActivity.save();
 
             const destination = await Destination.findByIdAndUpdate(
                 destinationId,
-                {$push: {spots: savedSpot._id}},
+                {$push: {activities: savedActivity._id}},
                 {new: true, useFindAndModify: false }
             )
             if(!destination){
                 return false
             }
 
-            return savedSpot;
+            return savedActivity;
         } catch (error) {
             console.error(error);
             throw new Error('Failed to create spot');
