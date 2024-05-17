@@ -6,7 +6,14 @@ const storage: StorageEngine = multer.diskStorage({
         cb(null, 'storage/');
     },
     filename: (req: Request, file: Express.Multer.File, cb: (error: Error | null, filename: string) => void) => {
-        cb(null, Date.now() + '-' + file.originalname);
+        
+        const randomString = Math.random().toString(36).substring(2, 8);
+        const timestamp = Date.now();
+        const originalName = file.originalname;
+        
+        const newFilename = `${timestamp}-${randomString}-${originalName}`;
+
+        cb(null, newFilename);
     }
 });
 
@@ -14,7 +21,7 @@ const fileFilter = (req: Request, file: Express.Multer.File, cb: FileFilterCallb
     if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
         cb(null, true);
     } else {
-        cb(null, false);
+        cb(new Error('Only JPEG or PNG files are allowed') as unknown as null, false);
     }
 };
 

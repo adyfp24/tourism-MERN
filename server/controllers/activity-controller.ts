@@ -4,11 +4,11 @@ import { ActivityService } from "../services/activity-service";
 export class ActivityController {
     static async createSpot(req: Request, res: Response) {
         try {
-            const { id_destinasi: destinationId } = req.params
+            const { id_destinasi: destinationId } = req.params;
+            const headerImg = req.file ? req.file.filename : '';
             const {
                 title,
                 description,
-                headerImg
             } = req.body;
             const data = { title, description, headerImg };
             const newActivity = await ActivityService.create(data, destinationId);

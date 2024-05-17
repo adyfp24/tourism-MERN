@@ -5,10 +5,10 @@ export class SpotController {
     static async createSpot(req: Request, res: Response) {
         try {
             const { id_destinasi: destinationId } = req.params
+            const headerImg = req.file ? req.file.filename : '';
             const {
                 title,
                 description,
-                headerImg
             } = req.body;
             const data = { title, description, headerImg };
             const newSpot = await SpotService.create(data, destinationId);
