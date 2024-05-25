@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import {loginService, registService, logoutService } from '../services/userService';
+import { useNavigate } from 'react-router-dom';
 
 const useAuth = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const register = async (userData) => {
     setLoading(true);
@@ -12,6 +14,7 @@ const useAuth = () => {
     try {
       const registeredUser = await registService(userData);
       setUser(registeredUser);
+      navigate('/login');
     } catch (err) {
       setError(err.response ? err.response.data : 'Registration failed');
     } finally {
