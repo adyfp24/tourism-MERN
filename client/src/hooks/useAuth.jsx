@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { registerUser } from '../services/authService';
+import {loginService, registService, logoutService } from '../services/userService';
 
 const useAuth = () => {
   const [user, setUser] = useState(null);
@@ -10,7 +10,7 @@ const useAuth = () => {
     setLoading(true);
     setError(null);
     try {
-      const registeredUser = await registerUser(userData);
+      const registeredUser = await registService(userData);
       setUser(registeredUser);
     } catch (err) {
       setError(err.response ? err.response.data : 'Registration failed');
@@ -20,11 +20,21 @@ const useAuth = () => {
   };
 
   const login = async (userData) => {
-
+    setLoading(true);
+    setError(null);
+    try {
+      const loggedInUser = await loginService(userData);
+      setUser(loggedInUser);
+    } catch (error) {
+      setError(err.response ? err.response.data : 'Login failed');
+    } finally {
+      setLoading(false)
+    }
   }
 
   const logout = async () => {
-
+    logoutService();
+    setUser(null);
   }
 
   return { user, loading, error, register, login, logout };
