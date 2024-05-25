@@ -16,7 +16,7 @@ function Navbar() {
     };
 
     return (
-        <div className="flex flex-wrap mb-16">
+        <div className="flex flex-wrap mb-20">
             <section className="relative mx-auto">
                 <nav className="fixed top-0 left-0 z-50 flex justify-between w-screen text-black bg-custom-100">
                     <div className="flex items-center justify-between w-full px-5 py-4 lg:px-12">
@@ -29,7 +29,7 @@ function Navbar() {
                                 <li className='hover:text-custom-500'><button onClick={() => navigateTo('/about')}>Tentang</button></li>
                                 <li className='hover:text-custom-500'><button onClick={() => navigateTo('/destinasi')}>Destinasi</button></li>
                                 <li className='hover:text-custom-500'><button onClick={() => navigateTo('/blog')}>Blog</button></li>
-                                <li className='hover:text-custom-500'><button onClick={() => navigateTo('/auth')} className="px-8 py-2 font-sans font-normal text-white bg-custom-200 rounded-2xl hover:bg-white hover:text-black">Login</button></li>
+                                <li className='hover:text-custom-500'><button onClick={() => navigateTo('/login')} className="px-8 py-2 font-sans font-normal text-white bg-custom-200 rounded-2xl hover:bg-white hover:text-black">Login</button></li>
                             </ul>
                         </div>
                     </div>
@@ -55,7 +55,7 @@ function Navbar() {
                                 <button onClick={() => navigateTo('/blog')}>Blog</button>
                             </li>
                             <li>
-                                <button className="px-4 text-white border rounded-md bg-custom-200 hover:bg-custom-300" onClick={() => navigateTo('/auth')}>Login</button>
+                                <button className="px-4 text-white border rounded-md bg-custom-200 hover:bg-custom-300" onClick={() => navigateTo('/register')}>Login</button>
                             </li>
                         </ul>
                     )}

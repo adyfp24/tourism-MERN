@@ -1,18 +1,33 @@
-import userService from "../services/userService";
+import { useState } from 'react';
+import { registerUser } from '../services/authService';
 
-import React from 'react'
+const useAuth = () => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-function useAuth() {
-  const getUser = () => {
-    userService.login()
-    .then((res)=> console.log('oke', res))
+  const register = async (userData) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const registeredUser = await registerUser(userData);
+      setUser(registeredUser);
+    } catch (err) {
+      setError(err.response ? err.response.data : 'Registration failed');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const login = async (userData) => {
+
   }
-  return (
-    <div>
-        <h1>useauth</h1>
-        
-    </div>
-  )
-}
 
-export default useAuth
+  const logout = async () => {
+
+  }
+
+  return { user, loading, error, register, login, logout };
+};
+
+export default useAuth;

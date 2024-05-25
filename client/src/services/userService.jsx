@@ -1,16 +1,18 @@
+import axios from 'axios';
 
-const userService = {
-  register: async () => {
+const userService = () => {
 
-  },
+  const register = async () => {
 
-  login: async () => {
+  };
 
-  },
+  const login = async () => {
 
-  logout: async () => {
+  };
+
+  const logout = async () => {
     
-  } 
+  }; 
 }
 
 export default userService
