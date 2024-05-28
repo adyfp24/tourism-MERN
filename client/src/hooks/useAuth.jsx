@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {loginService, registService, logoutService } from '../services/userService';
 import { useNavigate } from 'react-router-dom';
 
@@ -27,7 +27,9 @@ const useAuth = () => {
     setError(null);
     try {
       const loggedInUser = await loginService(userData);
-      setUser(loggedInUser);
+      setUser(loggedInUser.data);
+      const token = loggedInUser.access_token;
+      localStorage.setItem('token', token);
     } catch (error) {
       setError(err.response ? err.response.data : 'Login failed');
     } finally {
@@ -39,6 +41,13 @@ const useAuth = () => {
     logoutService();
     setUser(null);
   }
+
+  useEffect(() => {
+    if (user) {
+      console.log(user); 
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   return { user, loading, error, register, login, logout };
 };

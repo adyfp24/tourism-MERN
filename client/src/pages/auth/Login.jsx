@@ -1,8 +1,14 @@
 import React from 'react'
+import LoginForm from '../../components/auth/LoginForm'
+import Navbar from '../../components/Navbar'
 
 function Login() {
   return (
-    <div>Login</div>
+    <div>
+      <Navbar />
+      <div>Login</div>
+      <LoginForm />
+    </div>
   )
 }
 

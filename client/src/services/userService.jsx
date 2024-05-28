@@ -12,7 +12,7 @@ export const registService = async (userData) => {
 
 export const loginService = async (userData) => {
   const response = await axios.post(`${apiHelper.baseUrl}/login`, userData);
-  return response.data.data;
+  return response.data;
 };
 
 export const logoutService = async () => {
