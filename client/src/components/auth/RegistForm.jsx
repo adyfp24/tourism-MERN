@@ -1,26 +1,15 @@
 import React, { useState } from 'react';
 import useAuth from '../../hooks/useAuth';
+import useForm from '../../hooks/useForm';
 
 const RegisterForm = () => {
     const { register, loading, error } = useAuth();
-    const [formData, setFormData] = useState({
+    const { values, handleChange, handleSubmit } = useForm({
         username: '',
         email: '',
         password: '',
         role: '',
     });
-
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        await register(formData);
-    };
 
     const PasswordInput = () => {
         const [showPassword, setShowPassword] = useState(false);
@@ -37,14 +26,12 @@ const RegisterForm = () => {
                         type={showPassword ? "text" : "password"}
                         name='password'
                         onChange={handleChange}
-                        value={formData.password}
+                        value={values.password}
                         className="w-full px-3 py-2 mt-1 border-gray-300 rounded-lg"
                     />
-                    <img
-                        src={showPassword ? '' : ''}
-                        className="absolute w-5 h-5 right-2 hover:cursor-pointer"
-                        onClick={togglePasswordVisibility}
-                    />
+                    <button type="button" onClick={togglePasswordVisibility}>
+                        {showPassword ? 'Hide' : 'Show'}
+                    </button>
                 </div>
             </div>
         );
@@ -52,28 +39,25 @@ const RegisterForm = () => {
 
     return (
         <div className="px-1 mt-3 md:px-5">
-            <form onSubmit={handleSubmit} className="p-1 md:p-5">
+            <form onSubmit={handleSubmit(() => register(values))} className="p-1 md:p-5">
                 <div className="mb-4">
-                    <label htmlFor="username" className="block text-gray-700 lg:text-xl ">Nama pengguna</label>
-                    <input type="text" name='username' onChange={handleChange} value={formData.username} className="w-full px-3 py-2 mt-1 border-gray-300 rounded-lg" />
+                    <label htmlFor="username" className="block text-gray-700 lg:text-xl">Nama pengguna</label>
+                    <input type="text" name='username' onChange={handleChange} value={values.username} className="w-full px-3 py-2 mt-1 border-gray-300 rounded-lg" />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="email" className="block text-gray-700 lg:text-xl">Email</label>
-                    <input type="email" name="email" onChange={handleChange} value={formData.email} className="w-full px-3 py-2 mt-1 border-gray-300 rounded-lg" />
+                    <input type="email" name="email" onChange={handleChange} value={values.email} className="w-full px-3 py-2 mt-1 border-gray-300 rounded-lg" />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="role" className="block text-gray-700 lg:text-xl">Role</label>
-                    <input type="role" name="role" onChange={handleChange} value={formData.role} className="w-full px-3 py-2 mt-1 border-gray-300 rounded-lg" />
+                    <input type="role" name="role" onChange={handleChange} value={values.role} className="w-full px-3 py-2 mt-1 border-gray-300 rounded-lg" />
                 </div>
                 <PasswordInput />
                 {error && <p style={{ color: 'red' }}>{error}</p>}
 
                 <button type='submit' disabled={loading} className="w-full mt-4 font-semibold text-white bg-custom-200 md:py-3 xl:py-4px-4 rounded-xl hover:bg-custom-500 lg:text-2xl">Daftar</button>
-
-
             </form>
         </div>
-
     );
 };
 
