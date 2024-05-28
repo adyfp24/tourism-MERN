@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 
 function Navbar() {
+    const { user, logout, token } = useAuth();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const navigate = useNavigate();
 
@@ -15,13 +17,25 @@ function Navbar() {
         navigate(path);
     };
 
+    const handleLogout = () => {
+        logout();
+    };
+
+    useEffect(() => {
+        if (token) {
+            console.log('User is logged in with token:', token);
+        } else {
+            console.log('No token, user is not logged in');
+        }
+    }, [token]);
+
     return (
         <div className="flex flex-wrap mb-20">
             <section className="relative mx-auto">
                 <nav className="fixed top-0 left-0 z-50 flex justify-between w-screen text-black bg-custom-100">
                     <div className="flex items-center justify-between w-full px-5 py-4 lg:px-12">
                         <Link to="/" className="font-sans text-xl font-semibold font-heading">
-                            MalangKuy
+                            MalangKuy, {user ? user.username : 'yyy'}
                         </Link>
                         <div className="items-center hidden space-x-5 md:flex">
                             <ul className="items-center hidden mx-auto space-x-8 font-sans font-thin md:flex font-heading">
@@ -29,7 +43,9 @@ function Navbar() {
                                 <li className='hover:text-custom-500'><button onClick={() => navigateTo('/about')}>Tentang</button></li>
                                 <li className='hover:text-custom-500'><button onClick={() => navigateTo('/destinasi')}>Destinasi</button></li>
                                 <li className='hover:text-custom-500'><button onClick={() => navigateTo('/blog')}>Blog</button></li>
-                                <li className='hover:text-custom-500'><button onClick={() => navigateTo('/login')} className="px-8 py-2 font-sans font-normal text-white bg-custom-200 rounded-2xl hover:bg-white hover:text-black">Login</button></li>
+                                {token ?
+                                    <li className='hover:text-custom-500'><button onClick={() => handleLogout()} className="px-8 py-2 font-sans font-normal text-white bg-custom-200 rounded-2xl hover:bg-white hover:text-black">Logout</button></li>
+                                    : <li className='hover:text-custom-500'><button onClick={() => navigateTo('/login')} className="px-8 py-2 font-sans font-normal text-white bg-custom-200 rounded-2xl hover:bg-white hover:text-black">Login</button></li>}
                             </ul>
                         </div>
                     </div>
@@ -54,9 +70,12 @@ function Navbar() {
                             <li className="mb-2">
                                 <button onClick={() => navigateTo('/blog')}>Blog</button>
                             </li>
-                            <li>
-                                <button className="px-4 text-white border rounded-md bg-custom-200 hover:bg-custom-300" onClick={() => navigateTo('/register')}>Login</button>
-                            </li>
+                            {token ?
+                                <li>
+                                    <button className="px-4 text-white border rounded-md bg-custom-200 hover:bg-custom-300" onClick={() => handleLogout()}>Logout</button>
+                                </li> : <li>
+                                    <button className="px-4 text-white border rounded-md bg-custom-200 hover:bg-custom-300" onClick={() => navigateTo('/login')}>Login</button>
+                                </li>}
                         </ul>
                     )}
                 </nav>
