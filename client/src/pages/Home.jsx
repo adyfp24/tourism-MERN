@@ -8,7 +8,7 @@ function Home() {
   return (
     <div>
         <Navbar />
-        <h1>Home, hai {user ? user['username'] : 'Guest'}</h1>
+        <h1>Home, hai {user ? user.username : 'Guest'}</h1>
     </div>
   )
 }
