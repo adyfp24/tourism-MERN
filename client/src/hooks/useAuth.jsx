@@ -41,14 +41,13 @@ const useAuth = () => {
   }
 
   const logout =  () => {
-    // await logoutService();
     setUser(null);
     setToken(null);
     localStorage.removeItem('token');
   };
 
   useEffect(() => {
-    if (user) {
+    if (user != null) {
       console.log(user); 
       navigate('/');
     }

@@ -12,6 +12,7 @@ app.use(express.json());
 app.use(cors());
 app.use('/api/v1', authRoute);
 app.use('/api/v1', destRoute);
+app.use('/storage', express.static('storage'));
 
 
 app.listen(PORT, () => {
