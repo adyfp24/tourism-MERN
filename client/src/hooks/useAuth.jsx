@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {loginService, registService, logoutService } from '../services/userService';
+import {loginService, registService, getProfileService, logoutService } from '../services/userService';
 import { useNavigate } from 'react-router-dom';
 
 const useAuth = () => {
@@ -52,6 +52,18 @@ const useAuth = () => {
     localStorage.removeItem('token');
   };
 
+  const getProfile = async () => {
+    try {
+      const userData = await getProfileService(token);
+      setUser(userData);
+      console.log('ini user : ' + userData);
+    } catch (err) {
+      setError('Get Profile failed');
+    } finally {
+      setLoading(false)
+    }
+  }
+
   useEffect(() => {
     if (user) {
       console.log(user); 
@@ -59,7 +71,7 @@ const useAuth = () => {
     }
   }, [user, navigate]);
 
-  return { user, loading, error, token, register, login, logout };
+  return { user, loading, error, token, getProfile, register, login, logout };
 };
 
 export default useAuth;

@@ -11,12 +11,33 @@ export const registService = async (userData) => {
 };
 
 export const loginService = async (userData) => {
-  const response = await axios.post(`${apiHelper.baseUrl}/login`, userData);
-  return response.data;
+  try {
+    const response = await axios.post(`${apiHelper.baseUrl}/login`, userData);
+    return response.data;
+  } catch (error) {
+    throw error.response ? error.response.data : new Error('Login failed');
+  }
 };
 
 export const logoutService = async () => {
-  const response = await axios.post(`${apiHelper.baseUrl}/logout`);
-  return response.data
+  try {
+    const response = await axios.post(`${apiHelper.baseUrl}/logout`);
+    return response.data
+  } catch (error) {
+    throw error.response ? error.response.data : new Error('Logout failed');
+  }
 };
+
+export const getProfileService = async (token) => {
+  try {
+    const response = await axios.get(`${apiHelper.baseUrl}/profile`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },);
+    return response.data.data
+  } catch (error) {
+    throw error.response ? error.response.data : new Error('get profile failed');
+  }
+}
 

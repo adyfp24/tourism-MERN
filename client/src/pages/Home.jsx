@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import useAuth from '../hooks/useAuth'
 
 function Home() {
-  const { user } = useAuth();
+  const { user, getProfile } = useAuth();
+
+  useEffect(() => {
+    getProfile();
+  }, []);
 
   return (
     <div>
