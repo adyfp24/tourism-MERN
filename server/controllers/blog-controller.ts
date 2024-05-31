@@ -30,7 +30,6 @@ export class BlogController {
 
     }
 
-
     static async insertWriters(req: Request, res: Response) {
         try {
             const writersData = [
@@ -64,7 +63,26 @@ export class BlogController {
     }
 
     static async getAllBlog(req: Request, res: Response) {
-
+        try {
+            const allBlog = await BlogService.getAllBlog();
+            if(allBlog){
+                res.status(200).json({
+                    succes: true,
+                    message: 'berhasil mendapat data blog',
+                    data: allBlog
+                })
+            }else{
+                res.status(404).json({
+                    succes: false,
+                    message: 'data blog tidak tersedia'
+                })
+            }
+        } catch (error) {
+            res.status(500).json({
+                succes: false,
+                message: 'Internal server error' + error
+            })
+        }
     }
 
     static async getBlogById(req: Request, res: Response) {

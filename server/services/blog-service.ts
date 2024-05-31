@@ -23,6 +23,18 @@ export class BlogService {
         }
     }
 
+    static async getAllBlog(){
+        try {
+            const allBlog = await Blog.find();
+            if(!allBlog){
+                return false
+            }
+            return allBlog
+        } catch (error) {
+            console.error(error);
+            throw new Error('error when get all blog');
+        }
+    }
 
     static async insertWriters(writersData: { name: string; email: string }[]) {
         try {
