@@ -3,17 +3,13 @@ import Navbar from '../components/Navbar'
 import useAuth from '../hooks/useAuth'
 
 function Home() {
-  const { user, getProfile } = useAuth();
-
-  useEffect(() => {
-    getProfile();
-  }, []);
-
+  const { user } = useAuth();
+  
   return (
     <div>
       <Navbar />
       <div>
-        <h1>Home, hai {user ? user.username : 'Guest'}</h1>
+        <h1>Home, hai {user ? user.username : ''}</h1>
         {user && (
           <div>
             <p>Email: {user.email}</p>

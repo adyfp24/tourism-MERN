@@ -65,11 +65,10 @@ const useAuth = () => {
   }
 
   useEffect(() => {
-    if (user) {
-      console.log(user); 
-      navigate('/');
+    if (token) {
+      getProfile();
     }
-  }, [user, navigate]);
+  }, [token]);
 
   return { user, loading, error, token, getProfile, register, login, logout };
 };

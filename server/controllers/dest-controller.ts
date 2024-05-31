@@ -22,13 +22,13 @@ export class DestinasiController {
             if (newDestination) {
                 res.status(200).json({
                     success: true,
-                    message: 'User berhasil mendaftar',
+                    message: 'Destinasi berhasil ditambahkan',
                     data: newDestination,
                 });
             } else {
                 res.status(400).json({
                     success: false,
-                    message: 'User gagal mendaftar',
+                    message: 'Destinasi gagal ditambahkan',
                 });
             }
         } catch (error) {

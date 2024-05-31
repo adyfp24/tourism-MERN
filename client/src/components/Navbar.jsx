@@ -35,7 +35,7 @@ function Navbar() {
                 <nav className="fixed top-0 left-0 z-50 flex justify-between w-screen text-black bg-custom-100">
                     <div className="flex items-center justify-between w-full px-5 py-4 lg:px-12">
                         <Link to="/" className="font-sans text-xl font-semibold font-heading">
-                            MalangKuy, {user ? user.username : 'yyy'}
+                            MalangKuy
                         </Link>
                         <div className="items-center hidden space-x-5 md:flex">
                             <ul className="items-center hidden mx-auto space-x-8 font-sans font-thin md:flex font-heading">
