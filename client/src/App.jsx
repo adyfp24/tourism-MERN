@@ -6,6 +6,7 @@ import Destinasi from './pages/destinasi/Destinasi'
 import Blog from './pages/blog/Blog'
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
+import DashboardAdmin from './pages/admin/Dashboard'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Route path='/destinasi' Component={Destinasi}></Route>
           <Route path='/login' Component={Login}></Route>
           <Route path='/register' Component={Register}></Route>
+          <Route path='/admin-dashboard' Component={DashboardAdmin}></Route>
         </Routes>
     </>
   )

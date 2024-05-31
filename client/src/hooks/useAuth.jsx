@@ -33,6 +33,12 @@ const useAuth = () => {
       const token = loggedInUser.access_token;
       localStorage.setItem('token', token);
       setToken(token);
+
+      if (loggedInUser.data.role === 'admin') {
+        navigate('/admin-dashboard');
+      } else {
+        navigate('/');
+      }
     } catch (err) {
       setError('Login failed');
     } finally {
@@ -47,7 +53,7 @@ const useAuth = () => {
   };
 
   useEffect(() => {
-    if (user != null) {
+    if (user) {
       console.log(user); 
       navigate('/');
     }

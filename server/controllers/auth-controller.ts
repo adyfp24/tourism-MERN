@@ -56,4 +56,36 @@ export class AuthController {
             });
         }
     }
+
+    static async profile (req: Request, res: Response) {
+        try {
+            if (!req.user || !req.user.id) {
+                return res.status(401).json({
+                    success: false,
+                    message: 'Unauthorized'
+                });
+            }
+         
+            const userId = req.user.id;
+
+            const userData = await AuthService.profile(userId);
+            if (userData) {
+                res.status(200).json({
+                    success: true,
+                    message: 'berhasil mendapat data user',
+                    data: userData
+                });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    message: 'gagal mendapat data user',
+                });
+            }
+        } catch (error) {
+            res.status(500).json({
+                success: false,
+                message: 'Internal server error ' + error,
+            });
+        }
+    }
 }

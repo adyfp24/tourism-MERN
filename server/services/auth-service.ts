@@ -53,4 +53,17 @@ export class AuthService {
             throw new Error('Failed to login user');
         }
     }
+
+    static async profile (userId: any){
+        try {
+            const user = await User.findById(userId);
+            if (!user) {
+                return false
+            }
+            return user
+        } catch (error) {
+            console.error(error);
+            throw new Error('Failed to login user');
+        }
+    }
 }
