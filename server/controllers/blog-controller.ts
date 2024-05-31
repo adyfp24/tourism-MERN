@@ -30,6 +30,39 @@ export class BlogController {
 
     }
 
+
+    static async insertWriters(req: Request, res: Response) {
+        try {
+            const writersData = [
+                { name: 'Admin Amel', email: 'amel.doe@example.com' },
+                { name: 'Admin Doni', email: 'doni.smith@example.com' },
+                { name: 'Admin Rizky', email: 'rizky.johnson@example.com' },
+                { name: 'Admin Putri', email: 'putri.brown@example.com' },
+                { name: 'Admin Hanif', email: 'hanif.davis@example.com' },
+            ];
+
+            const newWriters = await BlogService.insertWriters(writersData);
+            
+            if (newWriters) {
+                res.status(200).json({
+                    success: true,
+                    message: 'Writers berhasil ditambahkan',
+                    data: newWriters,
+                });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    message: 'Writers gagal ditambahkan',
+                });
+            }
+        } catch (error) {
+            res.status(500).json({
+                success: false,
+                message: 'Internal server error: ' + error,
+            });
+        }
+    }
+
     static async getAllBlog(req: Request, res: Response) {
 
     }

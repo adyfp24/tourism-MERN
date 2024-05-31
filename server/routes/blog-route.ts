@@ -10,4 +10,6 @@ router.post('/blog', verifyToken, upload.single('file'), BlogController.createBl
 router.put('/blog/:id', verifyToken, BlogController.updateBlog);
 router.delete('/blog/:id', verifyToken, BlogController.deleteBlog);
 
+router.post('/author', verifyToken, BlogController.insertWriters);
+
 export default router
