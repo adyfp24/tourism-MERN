@@ -2,7 +2,7 @@ import mongoose, { Schema, Document, Types } from "mongoose";
 
 export interface IBlog extends Document {
     title: string;
-    writer: Types.ObjectId;
+    writer: string;
     content: string;
     date: Date;
     blogImg: string;

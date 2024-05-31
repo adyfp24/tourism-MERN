@@ -4,7 +4,7 @@ import { DestinationService } from "../services/dest-services";
 export class DestinasiController {
     static async createDestination(req: Request, res: Response) {
         try {
-            const headerImg = req.file ? req.file.filename : 't';
+            const headerImg = req.file ? req.file.filename : '';
             
             const {
                 title,
