@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import useAuth from '../../hooks/useAuth';
 import useForm from '../../hooks/useForm';
 
@@ -11,30 +11,19 @@ const RegisterForm = () => {
         role: '',
     });
 
-    const PasswordInput = () => {
-        const [showPassword, setShowPassword] = useState(false);
+    const passwordRef = useRef(null);
+    const [passwordValue, setPasswordValue] = useState('');
 
-        const togglePasswordVisibility = () => {
-            setShowPassword(!showPassword);
-        };
+    useEffect(() => {
+        setPasswordValue(values.password);
+    }, [values.password]);
 
-        return (
-            <div className="mb-4">
-                <label htmlFor="password" className="block text-gray-700 lg:text-xl">Password</label>
-                <div className="flex items-center">
-                    <input
-                        type={showPassword ? "text" : "password"}
-                        name='password'
-                        onChange={handleChange}
-                        value={values.password}
-                        className="w-full px-3 py-2 mt-1 border-gray-300 rounded-lg"
-                    />
-                    <button type="button" onClick={togglePasswordVisibility}>
-                        {showPassword ? 'Hide' : 'Show'}
-                    </button>
-                </div>
-            </div>
-        );
+    const togglePasswordVisibility = () => {
+        if (passwordRef.current.type === 'password') {
+            passwordRef.current.type = 'text';
+        } else {
+            passwordRef.current.type = 'password';
+        }
     };
 
     return (
@@ -50,9 +39,24 @@ const RegisterForm = () => {
                 </div>
                 <div className="mb-4">
                     <label htmlFor="role" className="block text-gray-700 lg:text-xl">Role</label>
-                    <input type="role" name="role" onChange={handleChange} value={values.role} className="w-full px-3 py-2 mt-1 border-gray-300 rounded-lg" />
+                    <input type="text" name="role" onChange={handleChange} value={values.role} className="w-full px-3 py-2 mt-1 border-gray-300 rounded-lg" />
                 </div>
-                <PasswordInput />
+                <div className="mb-4">
+                    <label htmlFor="password" className="block text-gray-700 lg:text-xl">Password</label>
+                    <div className="flex items-center">
+                        <input
+                            type="password"
+                            name='password'
+                            onChange={handleChange}
+                            value={passwordValue}
+                            className="w-full px-3 py-2 mt-1 border-gray-300 rounded-lg"
+                            ref={passwordRef}
+                        />
+                        <button type="button" onClick={togglePasswordVisibility}>
+                            Show
+                        </button>
+                    </div>
+                </div>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
 
                 <button type='submit' disabled={loading} className="w-full mt-4 font-semibold text-white bg-custom-200 md:py-3 xl:py-4px-4 rounded-xl hover:bg-custom-500 lg:text-2xl">Daftar</button>
