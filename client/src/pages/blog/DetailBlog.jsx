@@ -9,7 +9,7 @@ function DetailBlog() {
 
   useEffect(() => {
     getBlogById(id);
-  }, [id, getBlogById]);
+  }, []);
 
   if (loading) return <p className="text-center text-gray-500">Loading...</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;

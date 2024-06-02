@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react"
-import useAuth from "./useAuth"
-import { getAllService } from "../services/blogService";
+import { useState, useEffect } from "react";
+import { getAllService, getByIdService } from "../services/blogService";
 
 const useBlog = () => {
     const [loading, setLoading] = useState(false);
@@ -10,39 +9,36 @@ const useBlog = () => {
 
     const getAllBlog = async () => {
         setLoading(true);
-        setError(null)
+        setError(null);
         try {
-            const allBlog = await getAllService()
-            setBlogs(allBlog)
+            const allBlog = await getAllService();
+            setBlogs(allBlog);
         } catch (error) {
-            setError(error.response ? error.response.data : 'get all blog failed')
+            setError(error.response ? error.response.data : 'get all blog failed');
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
-    }
+    };
 
     const getBlogById = async (id) => {
         setLoading(true);
-        setError(null)
+        setError(null);
         try {
-            const blog = await getByIdService(id)
-            setBlog(blog)
+            const blog = await getByIdService(id);
+            setBlog(blog);
+            console.log("Blog detail:", blog); // Tambahkan log untuk memastikan data diterima
         } catch (error) {
-            setError(error.response ? error.response.data : 'get all blog failed')
+            setError(error.response ? error.response.data : 'get detail blog failed');
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
-    }
-
-    const createBlog =  async () => {
-
-    }
+    };
 
     useEffect(() => {
         getAllBlog();
     }, []);
 
-    return {loading, error, blogs, blog, getAllBlog, getBlogById, createBlog}
-}
+    return { loading, error, blogs, blog, getAllBlog, getBlogById };
+};
 
-export default useBlog
+export default useBlog;
