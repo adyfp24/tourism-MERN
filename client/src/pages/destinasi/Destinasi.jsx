@@ -3,7 +3,7 @@ import Navbar from "../../components/layout/Navbar";
 import useDestination from "../../hooks/useDestination";
 
 function Destinasi() {
-    const { destinasi, loading, error, getAllData } = useDestination();
+    const { destinasi, loading, error} = useDestination();
     const baseUrl = 'http://localhost:3000/storage';
     return (
         <div className="min-h-screen">
