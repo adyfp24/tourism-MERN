@@ -21,14 +21,6 @@ function Navbar() {
         logout();
     };
 
-    useEffect(() => {
-        if (token) {
-            console.log('User is logged in with token:', token);
-        } else {
-            console.log('No token, user is not logged in');
-        }
-    }, [token]);
-
     return (
         <div className="flex flex-wrap mb-20">
             <section className="relative mx-auto">

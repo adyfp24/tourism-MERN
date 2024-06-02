@@ -5,10 +5,6 @@ import useDestination from "../../hooks/useDestination";
 function Destinasi() {
     const { destinasi, loading, error, getAllData } = useDestination();
     const baseUrl = 'http://localhost:3000/storage';
-    useEffect(() => {
-        getAllData();
-    }, []);
-
     return (
         <div className="min-h-screen">
             <Navbar />

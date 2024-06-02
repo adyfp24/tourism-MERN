@@ -25,7 +25,7 @@ export class BlogService {
 
     static async getAllBlog(){
         try {
-            const allBlog = await Blog.find();
+            const allBlog = await Blog.find().populate('writer');
             if(!allBlog){
                 return false
             }

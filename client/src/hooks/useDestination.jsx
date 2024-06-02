@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import useAuth from "./useAuth"
 import { getAllService, getByIdService, addService, updateService, deleteService, } from "../services/destService";
 
@@ -36,6 +36,11 @@ const useDestination = () => {
     const deleteData = async () => {
 
     }
+
+    useEffect(() => {
+        getAllData();
+    }, []);
+
 
     return { destinasi, loading, error, getDataById, getAllData, addData, updateData, deleteData }
 }

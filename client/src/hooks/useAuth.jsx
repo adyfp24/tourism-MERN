@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {loginService, registService, getProfileService, logoutService } from '../services/userService';
+import { loginService, registService, getProfileService, logoutService } from '../services/userService';
 import { useNavigate } from 'react-router-dom';
 
 const useAuth = () => {
@@ -46,7 +46,7 @@ const useAuth = () => {
     }
   }
 
-  const logout =  () => {
+  const logout = () => {
     setUser(null);
     setToken(null);
     localStorage.removeItem('token');
@@ -63,6 +63,14 @@ const useAuth = () => {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    if (token) {
+      console.log('User is logged in with token:', token);
+    } else {
+      console.log('No token, user is not logged in');
+    }
+  }, [token]);
 
   useEffect(() => {
     if (token) {
