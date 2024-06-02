@@ -7,6 +7,7 @@ import Blog from './pages/blog/Blog'
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
 import DashboardAdmin from './pages/admin/Dashboard'
+import DetailBlog from './pages/blog/DetailBlog'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path='/' Component={Home}></Route>
           <Route path='/about' Component={About}></Route>
           <Route path='/blog' Component={Blog}></Route>
+          <Route path="/blog/:id" Component={DetailBlog}></Route>
           <Route path='/destinasi' Component={Destinasi}></Route>
           <Route path='/login' Component={Login}></Route>
           <Route path='/register' Component={Register}></Route>

@@ -10,8 +10,13 @@ export const getAllService = async () => {
     }
 }
 
-export const getByIdService = () => {
-
+export const getByIdService = async (id) => {
+    try {
+        const response = await axios.get(`${apiHelper.baseUrl}/blog/${id}`);
+        return response.data.data;
+    } catch (error) {
+        throw error.response ? error.response.data : new Error('get blog detail failed');
+    }
 }
 
 export const createService = () => {

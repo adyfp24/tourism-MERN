@@ -36,6 +36,19 @@ export class BlogService {
         }
     }
 
+    static async getBlogById(blogId: any){
+        try {
+            const blog = await Blog.findById(blogId).populate('writer');
+            if(!blog){
+                return false
+            }
+            return blog
+        } catch (error) {
+            console.error(error);
+            throw new Error('error when get blog detail');
+        }
+    }
+
     static async insertWriters(writersData: { name: string; email: string }[]) {
         try {
             const newWriters = await Writer.insertMany(writersData);

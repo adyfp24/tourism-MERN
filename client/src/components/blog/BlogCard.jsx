@@ -2,7 +2,7 @@ import React from "react";
 
 function BlogCard({ blog, onClick }) {
     return (
-      <div className="overflow-hidden bg-white rounded-lg shadow-lg">
+      <div className="overflow-hidden bg-white rounded-lg shadow-lg" onClick={onClick}>
         <img src={blog.blogImg} alt={blog.title} className="object-cover w-full h-48" />
         <div className="p-4">
           <h2 className="mb-2 text-xl font-semibold">{blog.title}</h2>

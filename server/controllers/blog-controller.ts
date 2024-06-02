@@ -86,7 +86,27 @@ export class BlogController {
     }
 
     static async getBlogById(req: Request, res: Response) {
-
+        try {
+            const blogId = req.params.id;
+            const blog = await BlogService.getBlogById(blogId);
+            if(blog){
+                res.status(200).json({
+                    succes: true,
+                    message: 'berhasil mendapat data blog',
+                    data: blog
+                })
+            }else{
+                res.status(404).json({
+                    succes: false,
+                    message: 'data blog tidak tersedia'
+                })
+            }
+        } catch (error) {
+            res.status(500).json({
+                succes: false,
+                message: 'Internal server error' + error
+            })
+        }
     }
 
     static async updateBlog(req: Request, res: Response) {
