@@ -1,6 +1,6 @@
 import React from 'react'
 import LoginForm from '../../components/auth/LoginForm'
-import Navbar from '../../components/Navbar'
+import Navbar from '../../components/layout/Navbar'
 
 function Login() {
   return (

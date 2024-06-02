@@ -1,6 +1,6 @@
 import React from 'react'
 import RegisterForm from '../../components/auth/RegistForm'
-import Navbar from '../../components/Navbar'
+import Navbar from '../../components/layout/Navbar'
 
 function Register() {
     return (

@@ -1,18 +1,18 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import useAuth from "./useAuth"
 import { getAllService } from "../services/blogService";
 
 const useBlog = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [blog, setBlog] = useState([])
+    const [blogs, setBlogs] = useState([])
 
     const getAllBlog = async () => {
         setLoading(true);
         setError(null)
         try {
             const allBlog = await getAllService()
-            setBlog(allBlog)
+            setBlogs(allBlog)
         } catch (error) {
             setError(error.response ? error.response.data : 'get all blog failed')
         } finally {
@@ -32,7 +32,7 @@ const useBlog = () => {
         getAllBlog();
     }, []);
 
-    return {loading, error, blog, getAllBlog, getBlogById, createBlog}
+    return {loading, error, blogs, getAllBlog, getBlogById, createBlog}
 }
 
 export default useBlog

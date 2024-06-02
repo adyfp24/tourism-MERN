@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/layout/Navbar'
 import useAuth from '../hooks/useAuth'
 
 function Home() {
