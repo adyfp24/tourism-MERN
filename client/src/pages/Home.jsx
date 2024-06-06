@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Navbar from '../components/layout/Navbar'
 import useAuth from '../hooks/useAuth'
+import Footer from '../components/layout/Footer';
 
 function Home() {
   const { user } = useAuth();
@@ -18,7 +19,7 @@ function Home() {
           </div>
         )}
       </div>
-
+      <Footer/>
     </div>
   )
 }

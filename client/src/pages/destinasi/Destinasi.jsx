@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Navbar from "../../components/layout/Navbar";
 import useDestination from "../../hooks/useDestination";
+import Footer from "../../components/layout/Footer";
 
 function Destinasi() {
     const { destinasi, loading, error} = useDestination();
@@ -59,6 +60,7 @@ function Destinasi() {
                     </div>
                 ))}
             </div>
+            <Footer/>
         </div>
     );
 }
