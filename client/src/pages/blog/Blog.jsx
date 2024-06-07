@@ -3,7 +3,10 @@ import Navbar from '../../components/layout/Navbar';
 import useBlog from '../../hooks/useBlog';
 import BlogCard from '../../components/blog/BlogCard';
 import { useNavigate } from 'react-router-dom';
+import headImg from '../../assets/images/blog/head-blog.png'
+import avatar from '../../assets/images/blog/Avatar.png'
 import Footer from '../../components/layout/Footer';
+import { Link } from 'react-router-dom';
 
 function Blog() {
   const { loading, error, blogs } = useBlog();
@@ -13,7 +16,7 @@ function Blog() {
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
   return (
-    <div>
+    <div className='h-full bg-custom-100'>
       <Navbar />
       <section id='head' className='bg-custom-100'>
         <div className='flex flex-col p-6 mx-8 mt-20 sm:flex-row bg-custom-300 sm:mx-16 sm:mt-24 rounded-2xl'>
@@ -43,13 +46,13 @@ function Blog() {
         </div>
       </section>
       
-      <div className="container px-4 py-8 mx-auto">
+      <section className="container px-16 py-8 mx-auto">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {blogs.map((blog) => (
             <BlogCard key={blog._id} blog={blog} onClick={() => navigate(`/blog/${blog._id}`)} />
           ))}
         </div>
-      </div>
+      </section>
       <Footer />
     </div>
   );
