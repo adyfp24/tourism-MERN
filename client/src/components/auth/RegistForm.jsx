@@ -42,6 +42,7 @@ const RegisterForm = () => {
                             <label htmlFor="username" className="block text-gray-700 lg:text-xl">Nama pengguna</label>
                             <input 
                                 type="text" 
+                                placeholder='masukkan username Anda'
                                 name='username' 
                                 onChange={handleChange} 
                                 value={values.username} 
@@ -54,6 +55,7 @@ const RegisterForm = () => {
                                 type="email" 
                                 name="email" 
                                 onChange={handleChange} 
+                                placeholder='masukkan email Anda'
                                 value={values.email} 
                                 className="w-full px-3 py-2 mt-1 border-gray-300 rounded-lg" 
                             />
@@ -64,6 +66,7 @@ const RegisterForm = () => {
                                 type="text" 
                                 name="role" 
                                 onChange={handleChange} 
+                                placeholder='masukkan role Anda'
                                 value={values.role} 
                                 className="w-full px-3 py-2 mt-1 border-gray-300 rounded-lg" 
                             />
@@ -75,6 +78,7 @@ const RegisterForm = () => {
                                     type={showPassword ? "text" : "password"}
                                     name='password'
                                     onChange={handleChange}
+                                    placeholder='masukkan password Anda'
                                     value={values.password}
                                     className="w-full px-3 py-2 mt-1 border-gray-300 rounded-lg"
                                     ref={passwordRef}

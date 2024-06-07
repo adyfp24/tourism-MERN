@@ -22,7 +22,7 @@ function Navbar() {
     };
 
     return (
-        <div className="flex flex-wrap mb-20">
+        <div className="flex flex-wrap">
             <section className="relative mx-auto">
                 <nav className="fixed top-0 left-0 z-50 flex justify-between w-screen text-black bg-custom-100">
                     <div className="flex items-center justify-between w-full px-5 py-4 lg:px-12">

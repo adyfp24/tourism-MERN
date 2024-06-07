@@ -7,7 +7,7 @@ function Destinasi() {
     const { destinasi, loading, error} = useDestination();
     const baseUrl = 'http://localhost:3000/storage';
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen mt-20">
             <Navbar />
             <div className="container py-8 mx-auto">
                 {loading && <p className="text-center text-blue-500">Loading...</p>}

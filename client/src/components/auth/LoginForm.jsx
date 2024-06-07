@@ -38,6 +38,7 @@ const LoginForm = () => {
                             <input
                                 type="text"
                                 name='username'
+                                placeholder="masukkan username Anda"
                                 onChange={handleChange}
                                 value={values.username}
                                 className="w-full px-3 py-2 mt-1 border-gray-300 rounded-lg"
@@ -48,6 +49,7 @@ const LoginForm = () => {
                             <div className="flex items-center">
                                 <input
                                     type={showPassword ? "text" : "password"}
+                                    placeholder="masukkan password Anda"
                                     name='password'
                                     onChange={handleChange}
                                     value={values.password}
@@ -71,11 +73,11 @@ const LoginForm = () => {
                         </button>
                         <p className="mt-3 text-xl text-center text-slate-600">atau</p>
                         <div className="flex justify-center gap-2 mt-5">
-                            <button className="flex items-center justify-center w-1/5 gap-2 p-3 text-base text-white bg-blue-500 md:w-1/3 sm:w-full rounded-xl text-start">
+                            <button className="flex items-center justify-center w-1/5 gap-2 p-3 text-base text-white bg-blue-500 md:w-1/2 sm:w-full rounded-xl text-start">
                                 <img src={fb} className="md:ml-2 w-15 sm:w-7 xl:w-10" />
                                 <p className="hidden md:block">Masuk dengan facebook</p>
                             </button>
-                            <button className="flex items-center justify-center w-1/5 gap-2 p-3 text-base text-white md:w-1/3 bg-slate-800 sm:w-full rounded-xl text-start">
+                            <button className="flex items-center justify-center w-1/5 gap-2 p-3 text-base text-white md:w-1/2 bg-slate-800 sm:w-full rounded-xl text-start">
                                 <img src={google} className="w-15 sm:w-7 xl:w-10" />
                                 <p className="hidden md:block">Masuk dengan google</p>
                             </button>
