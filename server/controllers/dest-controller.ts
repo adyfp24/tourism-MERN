@@ -61,4 +61,28 @@ export class DestinasiController {
             });
         }
     }
+
+    static async getDestinationById(req: Request, res: Response){
+        try {
+            const id = req.params.id;
+            const destination = await DestinationService.getById(id);
+            if(destination != null){
+                res.status(200).json({
+                    success: true,
+                    message: 'Data destinasi tersedia',
+                    data: destination,
+                });
+            }else{
+                res.status(400).json({
+                    success: false,
+                    message: 'gagal mendapat data destinasi',
+                });
+            }
+        } catch (error) {
+            res.status(500).json({
+                succes: false,
+                message: "internal server eror :" + error
+            }); 
+        }
+    }
 }

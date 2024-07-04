@@ -39,9 +39,6 @@ export class BlogService {
     static async getBlogById(blogId: any){
         try {
             const blog = await Blog.findById(blogId).populate('writer');
-            if(!blog){
-                return false
-            }
             return blog
         } catch (error) {
             console.error(error);
