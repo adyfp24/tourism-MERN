@@ -8,6 +8,7 @@ import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
 import DashboardAdmin from './pages/admin/Dashboard'
 import DetailBlog from './pages/blog/DetailBlog'
+import DetailDestinasi from './pages/destinasi/DetailDestinasi'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
           <Route path='/blog' Component={Blog}></Route>
           <Route path="/blog/:id" Component={DetailBlog}></Route>
           <Route path='/destinasi' Component={Destinasi}></Route>
+          <Route path='/destinasi/:id' Component={DetailDestinasi}></Route>
           <Route path='/login' Component={Login}></Route>
           <Route path='/register' Component={Register}></Route>
           <Route path='/admin-dashboard' Component={DashboardAdmin}></Route>

@@ -7,7 +7,7 @@
     "build": "npx tsc",
     "start": "nodemon -r dotenv/config server.ts",
     "dev": "nodemon server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error:d no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -23,7 +23,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.3.3",
     "multer": "^1.4.5-lts.1",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "vercel": "^34.2.8"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
@@ -32,4 +33,3 @@
     "typescript": "^5.4.5"
   }
 }
-
