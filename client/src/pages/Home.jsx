@@ -227,7 +227,7 @@ function Home() {
           </div>
 
           <div id="card" className="grid grid-cols-2 gap-6 p-5 mt-20 sm:grid-cols-4">
-            <Link to='destinasi/museum-angkut'>
+            <Link to='destinasi/6659a409ea7e38f121fd3119'>
             <div className="relative group">
               <img
                 src={satu}
@@ -245,7 +245,7 @@ function Home() {
                 Wonderful
               </p>
             </div>
-            <Link to='/destinasi/coban-rondo'>
+            <Link to='/destinasi/6659a350a876b9cb8569f2f9'>
             <div className="relative group">
               <img
                 src={dua}
@@ -258,7 +258,7 @@ function Home() {
               </div>
             </div>
             </Link>
-            <Link to='/destinasi/jatim-park'>
+            <Link to='/destinasi/6659a2f2a876b9cb8569f2f7'>
             <div className="relative group">
               <img
                 src={tiga}
@@ -270,7 +270,7 @@ function Home() {
               </div>
             </div>
             </Link>
-            <Link to='/destinasi/tugu-malang'>
+            <Link to='/destinasi/6659a3aeea7e38f121fd3117'>
             <div className="relative group">
               <img
                 src={empat}
@@ -282,7 +282,7 @@ function Home() {
               </div>
             </div>
             </Link>
-            <Link to='/destinasi/semeru'>
+            <Link to='/destinasi/6659a1873585d490e3af3762'>
             <div className="relative group">
               <img
                 src={lima}
@@ -300,7 +300,7 @@ function Home() {
                 Malang
               </p>
             </div>
-            <Link to='/destinasi/museum-angkut'>
+            <Link to='/destinasi/6659a409ea7e38f121fd3119'>
             <div className="relative group">
               <img
                 src={enam}

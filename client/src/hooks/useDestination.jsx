@@ -9,11 +9,11 @@ const useDestination = () => {
     const [dest, setDest] = useState(null);
     const { token } = useAuth();
 
-    const getDataById = async () => {
+    const getDataById = async (id) => {
         setLoading(true);
         setError(null);
         try {
-            const data = await getByIdService();
+            const data = await getByIdService(id);
             setDest(data);
         } catch (err) {
             setError(err.response ? err.response.data : 'Get destination by id failed')

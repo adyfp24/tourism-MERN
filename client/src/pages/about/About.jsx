@@ -128,7 +128,7 @@ function About() {
           <div className="grid w-full grid-cols-3 gap-2 py-6 sm:py-12 sm:gap-10 sm:mb-12">
             <div className="row-span-2 shadow-md md:col-span-1 bg-custom-300 rounded-xl">
               <div className='flex flex-col'>
-                <Link to='/destinasi/semeru'>
+                <Link to='/destinasi/6659a1873585d490e3af3762'>
                   <div className='relative w-full h-full group'>
                     <img className='w-full h-full transition-transform duration-500 transform group-hover:brightness-75' src={semeru} alt="" />
                     <div className="absolute text-xs font-semibold text-white transition-opacity duration-500 opacity-0 top-16 left-10 lg:top-44 lg:left-32 lg:text-5xl group-hover:opacity-100">
@@ -145,7 +145,7 @@ function About() {
             </div>
             <div className="shadow-md md:col-span-1 bg-custom-300 rounded-xl">
               <div className='flex flex-col'>
-                <Link to='/destinasi/jatim-park'>
+                <Link to='/destinasi/6659a2f2a876b9cb8569f2f7'>
                   <div className='relative w-full h-full group'>
                     <img className='w-full h-full transition-transform duration-500 transform group-hover:brightness-75' src={jatimPark} alt="" />
                     <div className="absolute text-xs font-semibold text-white transition-opacity duration-500 opacity-0 top-16 left-10 lg:top-44 lg:left-32 lg:text-5xl group-hover:opacity-100">
@@ -162,7 +162,7 @@ function About() {
 
             <div className="row-span-3 shadow-md md:col-span-1 bg-custom-300 rounded-xl">
               <div className='flex flex-col'>
-                <Link to='/destinasi/coban-rondo'>
+                <Link to='/destinasi/6659a350a876b9cb8569f2f9'>
                   <div className='relative w-full h-full group'>
                     <img className='w-full h-full transition-transform duration-500 transform group-hover:brightness-75' src={cobanRondo} alt="" />
                     <div className="absolute text-xs font-semibold text-white transition-opacity duration-500 opacity-0 top-16 left-10 lg:top-44 lg:left-32 lg:text-5xl group-hover:opacity-100">
@@ -179,7 +179,7 @@ function About() {
 
             <div className="row-span-2 shadow-md md:col-span-1 bg-custom-300 rounded-xl">
               <div className='relative flex flex-col group'>
-                <Link to='/destinasi/tugu-malang'>
+                <Link to='/destinasi/6659a3aeea7e38f121fd3117'>
                   <div className='w-full h-full'>
                     <img className='w-full h-full transition-transform duration-500 transform group-hover:brightness-75' src={tuguMalang} alt="" />
                     <div className="absolute text-xs font-semibold text-white transition-opacity duration-500 opacity-0 top-16 left-10 lg:top-44 lg:left-32 lg:text-5xl group-hover:opacity-100">
@@ -196,7 +196,7 @@ function About() {
 
             <div className="shadow-md md:col-span-1 bg-custom-300 rounded-xl">
               <div className='flex flex-col'>
-                <Link to='/destinasi/museum-angkut'>
+                <Link to='/destinasi/6659a409ea7e38f121fd3119'>
                   <div className='relative w-full h-full group'>
                     <img className='w-full h-full transition-transform duration-500 transform group-hover:brightness-75' src={museumAngkut} alt="" />
                     <div className="absolute text-xs font-semibold text-white transition-opacity duration-500 opacity-0 top-16 left-10 lg:top-32 lg:left-14 lg:text-5xl group-hover:opacity-100">
